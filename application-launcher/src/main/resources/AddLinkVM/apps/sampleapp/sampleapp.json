@@ -1,0 +1,12 @@
+{
+  "id": "sampleapp",
+  "name": "Sample Application from App SDK",
+  "path": "/#launcher/favorites",
+  "type": "web",
+  "groups": [
+    {
+      "id": "Documentation",
+      "name": "Documentation"
+    }
+  ]
+}

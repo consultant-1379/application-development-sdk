@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project name="Application SDK Documentation" xmlns="http://maven.apache.org/DECORATION/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
+
+  <skin>
+    <groupId>com.ericsson.cds</groupId>
+    <artifactId>ericsson-skin-stats</artifactId>
+    <version>1.0.1</version>
+  </skin>
+
+  <custom>
+    <uiStats>
+      <serverUrl>http://pdu-oss-tools.lmera.ericsson.se/cds/analytics/</serverUrl>
+      <siteId>15</siteId>
+    </uiStats>
+    <fluidoSkin>
+      <sourceLineNumbersEnabled>false</sourceLineNumbersEnabled>
+    </fluidoSkin>
+  </custom>
+
+  <bannerLeft>
+    <name>Application SDK</name>
+  </bannerLeft>
+  <publishDate position="right" />
+  <version position="none"/>
+  <bannerRight>
+    <src>images/logo.png</src>
+  </bannerRight>
+
+  <body>
+    <menu name="Available SDKs">
+      <item name="Application Launcher SDK" href="../../application-launcher/${project.version}/index.html"/>
+      <item name="Reporting Bugs" href="/reporting-bugs.html"/>
+    </menu>
+  </body>
+</project>

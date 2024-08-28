@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Application SDK Documentation" xmlns="http://maven.apache.org/DECORATION/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
+
+  <skin>
+    <groupId>com.ericsson.cds</groupId>
+    <artifactId>ericsson-skin-stats</artifactId>
+    <version>1.0.1</version>
+  </skin>
+
+  <custom>
+    <uiStats>
+      <serverUrl>http://pdu-oss-tools.lmera.ericsson.se/cds/analytics/</serverUrl>
+      <siteId>15</siteId>
+    </uiStats>
+    <fluidoSkin>
+      <sourceLineNumbersEnabled>false</sourceLineNumbersEnabled>
+    </fluidoSkin>
+  </custom>
+
+  <bannerLeft>
+    <name>Application Launcher SDK</name>
+  </bannerLeft>
+
+  <publishDate position="left" />
+  <version position="left"/>
+
+  <bannerRight>
+    <src>images/logo.png</src>
+  </bannerRight>
+
+  <body>
+    <links>
+      <item name="Home" href="/index.html" />
+      <item name="SDKs Home" href="../../application-development-sdk/${project.version}/index.html" />
+      <item name="About" href="/about.html" />
+      <item name="Release notes" href="/release-notes.html" />
+    </links>
+
+    <menu name="Application Launcher SDK">
+      <item name="Architectural view" href="/arch-view.html"/>
+      <item name="Use cases" href="/use-cases.html">
+        <item name="Add link to ENM Application Launcher" href="/uc/use-case-add-link.html"/>
+        <item name="Add Custom Actions to ENM Application" href="/uc/use-case-add-action-link.html"/>
+        <item name="Remove Custom Actions from ENM Application" href="/uc/use-case-remove-link.html"/>
+        <item name="Rollback Customization" href="/uc/use-case-rollback-link.html"/>
+      </item>
+      <item name="Prerequisites" href="/prerequisites.html"/>
+      <item name="Getting started" href="/getting-started.html"/>
+      <item name="Test environment setup" href="/setup-test-env.html"/>
+      <item name="Deploying to production" href="/deploying.html"/>
+      <item name="Troubleshooting" href="/troubleshooting.html"/>
+      <item name="Reporting Bugs" href="/reporting-bugs.html"/>
+    </menu>
+  </body>
+</project>

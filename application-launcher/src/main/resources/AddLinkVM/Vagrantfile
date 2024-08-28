@@ -1,0 +1,28 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+required_plugins = %w( vagrant-docker-compose vagrant-disksize )
+required_plugins.each do |plugin|
+  system "vagrant plugin install #{plugin}" unless Vagrant.has_plugin? plugin
+end
+
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "ubuntu/xenial64"
+
+  config.vm.provider "virtualbox" do |v|
+	v.memory = 5000
+  end
+
+  config.disksize.size = '40GB'
+  config.vm.network(:forwarded_port, guest: 80, host: 80)
+  config.vm.network(:forwarded_port, guest: 8080, host: 8080)
+  config.vm.network(:forwarded_port, guest: 9999, host: 9999)
+  config.vm.network(:forwarded_port, guest: 9990, host: 9990)
+  config.vm.network(:forwarded_port, guest: 8787, host: 8787)
+
+  vagrant_root = File.dirname(__FILE__)
+  config.vm.synced_folder "#{vagrant_root}/apps", "/home/vagrant/apps"
+
+  config.vm.provision :docker
+  config.vm.provision :docker_compose, env: { "COMPOSE_HTTP_TIMEOUT" => "1200" }, yml: "/vagrant/docker/docker-compose.yml", rebuild: true, run: "always"
+end

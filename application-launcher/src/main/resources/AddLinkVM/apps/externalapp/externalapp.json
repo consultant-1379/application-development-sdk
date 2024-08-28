@@ -1,0 +1,16 @@
+{
+  "id": "externalapp",
+  "name": "Example of external application from App SDK",
+  "protocol": "secure",
+  "externalHost": "arm1s11-eiffel004.eiffel.gic.ericsson.se:8443",
+  "port": "8443",
+  "path": "/nexus/content/sites/tor/application-launcher/latest/index.html",
+  "type": "web",
+  "openInNewWindow": true,
+  "groups": [
+    {
+      "id": "Documentation",
+      "name": "Documentation"
+    }
+  ]
+}

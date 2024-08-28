@@ -1,0 +1,133 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.ericsson.nms</groupId>
+    <artifactId>integration</artifactId>
+    <version>15.2.0.40</version>
+  </parent>
+
+  <groupId>com.ericsson.enm.sdk</groupId>
+  <artifactId>application-development-sdk</artifactId>
+  <version>1.0.53-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>Application Integration SDK</name>
+
+  <distributionManagement>
+    <site>
+      <id>site</id>
+      <name>Site</name>
+      <url>${site.url}/${project.artifactId}/${project.version}</url>
+    </site>
+  </distributionManagement>
+
+  <properties>
+      <!-- Do not change this property - it is used in the maven site velocity
+        templates for the sdk Velocity cannot handle the dot notation variables i.e.
+        : ${current.version} will not work ${CurrentVersion} works fine. This is
+        a known maven limitation -->
+      <CurrentVersion>${project.version}</CurrentVersion>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <jira.url>http://jira-oss.lmera.ericsson.se/secure/RapidBoard.jspa?rapidView=2514</jira.url>
+      <nexusUrl>https://arm1s11-eiffel004.eiffel.gic.ericsson.se:8443/nexus/</nexusUrl>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.6</version>
+        <executions>
+          <execution>
+            <id>copy-site-resources</id>
+            <phase>pre-site</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/site-resources</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>src/site</directory>
+                  <excludes>
+                    <exclude>**/*.zip</exclude>
+                  </excludes>
+                  <filtering>true</filtering>
+                </resource>
+                <resource>
+                  <directory>src/site</directory>
+                  <includes>
+                    <include>**/*.zip</include>
+                  </includes>
+                  <filtering>false</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.2</version>
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.maven.doxia</groupId>
+            <artifactId>doxia-module-markdown</artifactId>
+            <version>1.3</version>
+          </dependency>
+        </dependencies>
+        <configuration>
+          <generateProjectInfo>false</generateProjectInfo>
+          <generateReports>false</generateReports>
+          <siteDirectory>${project.build.directory}/site-resources</siteDirectory>
+          <locales>en</locales>
+          <inputEncoding>UTF-8</inputEncoding>
+          <outputEncoding>UTF-8</outputEncoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>com.ericsson.maven.plugins</groupId>
+        <artifactId>cifwk-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>taf-testware-to-database</id>
+            <phase>none</phase>
+          </execution>
+          <execution>
+            <id>artifact-to-database</id>
+            <phase>none</phase>
+          </execution>
+          <execution>
+            <id>buildArtifactBOMSnipplet</id>
+            <phase>none</phase>
+          </execution>
+          <execution>
+            <id>projectCheck</id>
+            <phase>none</phase>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <modules>
+    <module>application-db-populator</module>
+    <module>custom-json-parser</module>
+    <module>application-sdk-tools</module>
+    <module>application-launcher</module>
+  </modules>
+
+  <profiles>
+    <profile>
+      <id>site_latest</id>
+      <distributionManagement>
+        <site>
+          <id>site</id>
+          <name>Site</name>
+          <url>${site.url}/${project.artifactId}/latest</url>
+        </site>
+      </distributionManagement>
+    </profile>
+  </profiles>
+</project>

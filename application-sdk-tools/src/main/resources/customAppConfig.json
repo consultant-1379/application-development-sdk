@@ -1,0 +1,153 @@
+{
+    "customApplications": [
+        {
+            "appName": "topologybrowser",
+            "executableDetail": [
+             {
+                "guiLabel": "Custom_Code_For_TopologyBrowser",
+                "commandToExecute": "java -jar <code_path>",
+                "context": "%id%",
+                "actionEnable": "true",
+                "customAction": "true",
+                "actionRule": {
+                    "condition": {
+                        "dataType": "ManagedObject"
+                    }
+                }
+             }
+            ],
+          "urlDetails": [
+            {
+                "guiLabel": "Launch_Yahoo",
+                "category": "Fault Management Actions",
+                "protocol": "https",
+                "domainOrIPAddress": "in.yahoo.com",
+                "path": "search",
+                "queryparams": "nodeId=%id%",
+                "queryDelimiter": "&",
+                "actionEnable": "true",
+                "customAction": "true",
+                "actionRule": {
+                    "condition": {
+                        "dataType": "ManagedObject"
+                    }
+                }
+            },
+            {
+                "guiLabel": "Launch_Webmail",
+                "protocol": "https",
+                "domainOrIPAddress": "%moType%",
+                "path": "search",
+                "queryparams": "cisco is not working %moType% is that fine&%fdn% is troublesome",
+                "queryDelimiter": "&",
+                "port": "8080",
+                "actionEnable": "true",
+                "customAction": "true",
+                "actionRule": {
+                    "condition": {
+                        "dataType": "ManagedObject",
+                        "properties": [
+                            {
+                                "name": "type",
+                                "value": "MeContext"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "guiLabel": "Launch_Node_Attributes",
+                "protocol": "https",
+                "domainOrIPAddress": "%ipAddress%",
+                "path": "search",
+                "queryparams": "node=%id%,%neType%",
+                "queryDelimiter": ",",
+                "port": "8080",
+                "actionEnable": "true",
+                "customAction": "true",
+                "actionRule": {
+                    "condition": {
+                        "dataType": "ManagedObject",
+                        "properties": [
+                            {
+                                "name": "neType",
+                                "value": "ERBS"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "guiLabel": "Launch_Node_IPaddress",
+                "protocol": "https",
+                "domainOrIPAddress": "%ipAddress%",
+                "port": "8080",
+                "actionEnable": "true",
+                "customAction": "true",
+                "actionRule": {
+                    "condition": {
+                        "dataType": "ManagedObject",
+                        "properties": [
+                            {
+                                "name": "type",
+                                "value": "ManagedElement"
+                            }
+                        ]
+                    }
+                }
+            }
+          ]
+        },
+        {
+        "appName": "alarmviewer",
+        "executableDetail": [
+            {
+                "guiLabel": "Custom_Code_For_AlarmView_Single",
+                "commandToExecute": "bash <script_path>",
+                "context": "%eventPoId%",
+                "actionEnable": "true",
+                "customAction": "true",
+                "multipleSelection": "true",
+                "actionRule": {
+                    "condition": {
+                        "dataType": "ManagedObject"
+                    }
+                }
+            },
+         {
+                "guiLabel": "Custom_Code_For_AlarmView_Multiple",
+                "commandToExecute": "bash <script_path>",
+                "context": "%eventPoId%",
+                "actionEnable": "true",
+                "customAction": "true",
+                "multipleSelection": "true",
+                "actionRule": {
+                    "condition": {
+                        "dataType": "Alarm"
+                    }
+                }
+            }
+
+        ],
+        "urlDetails": [
+            {
+                "guiLabel": "Launch_Yahoo1",
+                "category": "Fault Management Actions",
+                "protocol": "https",
+                "domainOrIPAddress": "in.yahoo.com",
+                "path": "search",
+                "queryparams": "nodeId=%id%",
+                "queryDelimiter": "&",
+                "actionEnable": "true",
+                "customAction": "true",
+                "multipleSelection": "true",
+                "actionRule": {
+                    "condition": {
+                        "dataType": "ManagedObject"
+                    }
+                }
+            }
+        ]
+        }
+   ]
+}
